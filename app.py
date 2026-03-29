@@ -47,6 +47,13 @@ with st.form("pet_form"):
 
 if owner.pets:
     st.write("**Your pets:**", ", ".join(owner.get_pet_names()))
+    # Delete a pet
+    with st.expander("🗑️ Remove a pet"):
+        pet_to_delete = st.selectbox("Select pet to remove", owner.get_pet_names(), key="delete_pet")
+        if st.button("Delete Pet"):
+            owner.pets = [p for p in owner.pets if p.name != pet_to_delete]
+            st.success(f"Removed **{pet_to_delete}**.")
+            st.rerun()
 
 # ── Section 3: Add a Task ─────────────────────────────────────────────────────
 st.header("3. Add a Task")
