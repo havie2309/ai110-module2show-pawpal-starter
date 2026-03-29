@@ -1,0 +1,47 @@
+{
+  "name": "Alex",
+  "email": "alex@email.com",
+  "pets": [
+    {
+      "name": "Buddy",
+      "species": "Dog",
+      "age": 3,
+      "tasks": [
+        {
+          "description": "Morning Walk",
+          "time": "08:00",
+          "frequency": "once",
+          "pet_name": "Buddy",
+          "due_date": "2026-03-29",
+          "completed": false,
+          "priority": "medium"
+        },
+        {
+          "description": "Shower",
+          "time": "10:30",
+          "frequency": "once",
+          "pet_name": "Buddy",
+          "due_date": "2026-03-29",
+          "completed": false,
+          "priority": "high"
+        }
+      ]
+    },
+    {
+      "name": "Whiskers",
+      "species": "Dog",
+      "age": 3,
+      "tasks": [
+        {
+          "description": "Morning Walk",
+          "time": "09:00",
+          "frequency": "once",
+          "pet_name": "Whiskers",
+          "due_date": "2026-03-29",
+          "completed": false,
+          "priority": "medium"
+        }
+      ]
+    }
+  ]
+}
