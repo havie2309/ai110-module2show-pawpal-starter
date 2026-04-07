@@ -1,0 +1,58 @@
+@startuml PawPal System
+!define ARROWCOLOR #333333
+skinparam linetype ortho
+skinparam classBackgroundColor #E8F4F8
+skinparam classBorderColor #2C5282
+skinparam arrowColor ARROWCOLOR
+
+class Task {
+    - description: str
+    - time: str
+    - frequency: str
+    - pet_name: str
+    - due_date: date
+    - completed: bool
+    - priority: str
+    ---
+    + get_emoji(): str
+    + mark_complete(): Optional[Task]
+}
+
+class Pet {
+    - name: str
+    - species: str
+    - age: int
+    - tasks: list[Task]
+    ---
+    + add_task(task: Task): void
+    + get_tasks(): list[Task]
+}
+
+class Owner {
+    - name: str
+    - email: str
+    - pets: list[Pet]
+    ---
+    + add_pet(pet: Pet): void
+    + get_all_tasks(): list[Task]
+    + get_pet_names(): list[str]
+    + save_to_json(filepath: str): void
+    + load_from_json(filepath: str): Optional[Owner]
+}
+
+class Scheduler {
+    - owner: Owner
+    ---
+    + get_todays_schedule(): list[Task]
+    + sort_by_time(tasks: list): list[Task]
+    + filter_by_pet(pet_name: str): list[Task]
+    + filter_by_status(completed: bool): list[Task]
+    + detect_conflicts(): list[str]
+    + mark_task_complete(task: Task): Optional[Task]
+}
+
+Owner "1" *-- "many" Pet : manages
+Pet "1" o-- "many" Task : contains
+Scheduler "1" -- "1" Owner : organizes
+
+@enduml
